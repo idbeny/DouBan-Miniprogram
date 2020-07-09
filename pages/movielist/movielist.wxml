@@ -1,0 +1,6 @@
+<!--pages/movielist/movielist.wxml-->
+<view class="container">
+  <view class="item-wrapper" wx:for="{{ movies }}" wx:for-item="movie" wx:key="unique">
+    <movie-item movie= "{{ movie }}"></movie-item>
+  </view>
+</view>

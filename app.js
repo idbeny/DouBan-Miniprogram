@@ -1,6 +1,52 @@
 //app.js
 App({
+  // 初始化豆瓣定制化弹框
+  initDBToast() {
+    const toastTypeNormal = 0; // 普通文字类型
+    const toastTypeSuccess = 1; // 成功提示类型
+    const toastTypeError = 2; // 错误提示类型
+    let commonToast = (title, type, duration = 1500) => {
+      let options = {
+        title: title,
+        icon: 'none',
+        duration: duration
+      };
+      if (type == toastTypeSuccess) {
+        options.icon = 'success'
+      } else if (type == toastTypeError) {
+        options.icon = '/assets/imgs/upsdk_cancel_normal.png';
+      }
+      wx.showToast(options);
+    };
+
+    // 普通提示
+    wx.db.toast = (title, duration) => {
+      commonToast(title, toastTypeNormal, duration);
+    };
+
+    // 成功提示
+    wx.db.toastSuccess = (title, duration) => {
+      commonToast(title, toastTypeSuccess, duration);
+    };
+
+    // 错误提示
+    wx.db.toastError = (title, duration) => {
+      commonToast(title, toastTypeError, duration);
+    };
+  },
+
   onLaunch: function () {
+    // 豆瓣定制化信息
+    wx.db = {};
+
+    // Toast必须进行初始化，否则undefined
+    this.initDBToast();
+
+    // 拼接请求地址
+    wx.db.requestURL = (url) => {
+      return `https://api.douban.com/${url}`;
+    };
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

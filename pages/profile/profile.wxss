@@ -1,4 +1,15 @@
 /* pages/profile/profile.wxss */
+page {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .login-wrapper {
   display: flex;
   justify-content: center;
@@ -21,17 +32,121 @@
   width: 300rpx;
   height: 80rpx;
   line-height: 80rpx;
+  font-size: 35rpx;
+  font-weight: 300;
   background-color: #fff;
   color: #000;
   border-radius: 40rpx;
   text-align: center;
 }
 
+.title-wrapper {
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-wrapper .more {
+  font-size: 25rpx;
+  color: #999;
+  display: flex;
+  align-items: center;
+  padding-right: 10rpx;
+}
+
+.arrow {
+  width: 20rpx;
+  height: 20rpx;
+  border: 1rpx solid #999;
+  border-top: none;
+  border-left: none;
+  transform: rotate(-45deg);
+  margin-right: 15rpx;
+  margin-left: 10rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0rpx 30rpx;
+  padding-top: 20rpx;
+}
+
+.item .icon {
+  width: 60rpx;
+  height: 60rpx;
+  opacity: 0.6;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+}
+
+.info-wrapper {
+  flex-grow: 1
+}
+
+.info-wrapper .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10rpx;
+}
+
+.history-wrapper .title {
+  font-size: 28rpx;
+  font-weight: 300;
+}
+
+.count-wrapper {
+  color: #999;
+  display: flex;
+  align-items: flex-end;
+}
+
+.count-wrapper .count {
+  font-size: 45rpx;
+  margin-right: 20rpx;
+}
+
+.count-wrapper .desc {
+  font-size: 25rpx;
+  margin-bottom: 10rpx;
+}
+
+.notes-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.tips-wrapper {
+  font-size: 25rpx;
+  font-weight: 300;
+  color: #C1C1C1;
+  margin-right: 50rpx;
+}
+
+.begin {
+  background-color: #F5F5F5;
+  color: #4A4A4A;
+  padding: 10rpx 15rpx;
+  border-radius: 10rpx;
+  font-size: 25rpx;
+}
+
+.divider {
+  width: 100%;
+  height: 2rpx;
+  background-color: #f6f6f6;
+  margin-top: 15rpx;
+}
+
 .version {
   width: 100%;
-  position: absolute;
-  bottom: 50rpx;
   text-align: center;
   font-size: 24rpx;
-  color: #999999;
+  font-weight: 200;
+  color: #C1C1C1;
+  margin: 30rpx auto;
 }

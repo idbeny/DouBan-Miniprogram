@@ -1,0 +1,30 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="search-wrapper">
+    <view class="search">
+      <image src="/assets/imgs/ic_search.png"/>
+      搜索
+    </view>
+  </view>
+  <view class="content-wrapper">
+    <view wx:for="{{ sections }}" wx:for-item="section" wx:key="unique" class="section">
+      <view class="title-wrapper">
+        <view class="title">{{ section.title }}</view>
+        <view class="more" data-index="{{ index }}" bind:tap="viewMore">
+          查看更多
+          <view class="arrow"></view>
+        </view>
+      </view>
+      <scroll-view class="items" scroll-x="true">
+        <movie-item 
+          wx:for="{{ section.movies }}" 
+          wx:for-item="movie" 
+          wx:key="unique"
+          class="item" 
+          movie= "{{ movie }}"
+          >
+        </movie-item>
+      </scroll-view>
+    </view>
+  </view>
+</view>

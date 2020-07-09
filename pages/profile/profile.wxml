@@ -1,8 +1,45 @@
 <!--pages/profile/profile.wxml-->
 <view class="container">
-  <view class="login-wrapper">
-    <image src="/assets/imgs/bg_mine_login.png" mode="aspectFill" />
-    <view class="login">登录</view>
+  <view>
+    <view class="login-wrapper">
+      <image src="/assets/imgs/bg_mine_login.png" mode="aspectFill" />
+      <view class="login">登录</view>
+    </view>
+    <view class="items-wrapper">
+      <view class="title-wrapper">
+        <view class="title">我的书影音</view>
+        <view class="more">
+          登录查看
+          <view class="arrow"></view>
+        </view>
+      </view>
+      <view class="items">
+        <view wx:for="{{ items }}" class="item">
+          <image class="icon" src="/assets/imgs/{{ item.iconName }}"></image>
+          <view class="info-wrapper">
+            <view class="info">
+              <view class="history-wrapper">
+                <view class="title">{{ item.title }}</view>
+                <view class="count-wrapper">
+                  <view class="count">{{ item.hasCount }}</view>
+                  <view class="desc">{{ item.hasDesc }}</view>
+                </view>
+              </view>
+              <view class="notes-wrapper">
+                <view class="tips-wrapper">
+                  <view class="top">{{ item.tipsMark }}</view>
+                  <view class="bottom">{{ item.tipsMarkDesc }}</view>
+                </view>
+                <view class="begin">立即开启</view>
+                <view class="arrow"></view>
+              </view>
+            </view>
+            <view wx:if="{{ items.length - 1 > index }}" class="divider"></view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
+  
   <view class="version">版本1.0.39</view>
 </view>

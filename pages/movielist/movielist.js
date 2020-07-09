@@ -1,43 +1,33 @@
-// pages/profile/profile.js
+// pages/movielist/movielist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [
-      {
-        iconName: 'ic_cat_movie.png',
-        title: '观影分析',
-        hasCount: 0,
-        hasDesc: '看过',
-        tipsMark: '标记10部影片',
-        tipsMarkDesc: '开启观影分析'
-      },
-      {
-        iconName: 'ic_cat_book.png',
-        title: '读书分析',
-        hasCount: 0,
-        hasDesc: '读过',
-        tipsMark: '标记10本书',
-        tipsMarkDesc: '开启读书分析'
-      },
-      {
-        iconName: 'ic_cat_music.png',
-        title: '音乐分析',
-        hasCount: 0,
-        hasDesc: '听过',
-        tipsMark: '标记10张唱片',
-        tipsMarkDesc: '开启音乐分析'
-      }
-    ]
+    movies: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let title = options.title;
+    let sourceURL = options.sourceURL;
+    // 获取缓存数据
+    wx.getStorage({
+      key: sourceURL,
+      success: (result) => {
+        this.setData({
+          movies: result.data
+        })
+      }
+    });
+      
+    // 设置导航标题
+    wx.setNavigationBarTitle({
+      title: title
+    });
   },
 
   /**
