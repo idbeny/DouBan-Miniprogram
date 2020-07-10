@@ -1,2 +1,3 @@
 <!--pages/moviedetail/moviedetail.wxml-->
+<nav-bar title='{{ movie.title }}'></nav-bar>
 <text>pages/moviedetail/moviedetail.wxml</text>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "movie-item": "/components/movie-item/movie-item"
+    "movie-item": "/components/movie-item/movie-item",
+    "nav-bar": "/components/nav-bar/nav-bar"
   }
 }

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movies: []
+    movies: [],
+    title: ''
   },
 
   /**
@@ -19,14 +20,10 @@ Page({
       key: sourceURL,
       success: (result) => {
         this.setData({
-          movies: result.data
+          movies: result.data,
+          title
         })
       }
-    });
-      
-    // 设置导航标题
-    wx.setNavigationBarTitle({
-      title: title
     });
   },
 

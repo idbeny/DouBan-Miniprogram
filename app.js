@@ -47,6 +47,15 @@ App({
       return `https://api.douban.com/${url}`;
     };
 
+    // 获取系统信息
+    const systemInfo = wx.getSystemInfoSync();
+    wx.db.statusBarHeight = systemInfo.statusBarHeight;
+    let navBarHeight = 44.0;
+    if (systemInfo.platform == 'android') {
+      navBarHeight = 48.0;
+    }
+    wx.db.navBarHeight = navBarHeight;
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

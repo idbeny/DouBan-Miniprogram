@@ -20,6 +20,10 @@
   justify-content: center;
 }
 
+.search-hover {
+  background-color: #d2f5d7;
+}
+
 .search image {
   width: 32rpx;
   height: 32rpx;

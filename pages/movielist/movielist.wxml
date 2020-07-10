@@ -1,4 +1,5 @@
 <!--pages/movielist/movielist.wxml-->
+<nav-bar title='{{ title }}'></nav-bar>
 <view class="container">
   <view class="item-wrapper" wx:for="{{ movies }}" wx:for-item="movie" wx:key="unique">
     <movie-item movie= "{{ movie }}"></movie-item>

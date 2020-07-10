@@ -17,9 +17,6 @@ Page({
     const movie = JSON.parse(movieJSON);
     this.setData({
       movie: movie
-    })
-    wx.setNavigationBarTitle({
-      title: movie.title
     });
   },
 

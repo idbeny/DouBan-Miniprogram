@@ -1,0 +1,14 @@
+<!--pages/search/search.wxml-->
+<nav-bar title="搜索"
+        statusBarMode='1'
+        color="#42BD55"
+        titleColor="#fff">
+</nav-bar>
+<view class="container">
+  <view class="search-wrapper">
+    <view class="input-wrapper">
+      <image class="search-icon" src="/assets/imgs/ic_search.png"/>
+      <input class="search" focus confirm-type="search" placeholder="搜索"></input>
+    </view>
+  </view>
+</view>

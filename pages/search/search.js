@@ -1,42 +1,11 @@
-// pages/profile/profile.js
+// pages/search/search.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [
-      {
-        iconName: 'ic_cat_movie.png',
-        title: '观影分析',
-        hasCount: 0,
-        hasDesc: '看过',
-        tipsMark: '标记10部影片',
-        tipsMarkDesc: '开启观影分析'
-      },
-      {
-        iconName: 'ic_cat_book.png',
-        title: '读书分析',
-        hasCount: 0,
-        hasDesc: '读过',
-        tipsMark: '标记10本书',
-        tipsMarkDesc: '开启读书分析'
-      },
-      {
-        iconName: 'ic_cat_music.png',
-        title: '音乐分析',
-        hasCount: 0,
-        hasDesc: '听过',
-        tipsMark: '标记10张唱片',
-        tipsMarkDesc: '开启音乐分析'
-      }
-    ]
-  },
 
-  login() {
-    wx.navigateTo({
-      url: '/pages/login/login'
-    });
   },
 
   /**

@@ -1,7 +1,15 @@
 <!--pages/home/home.wxml-->
+<nav-bar title="首页"
+        statusBarMode='1'
+        color="#42BD55"
+        titleColor="#fff"
+        back="false"
+        home="false">
+</nav-bar>
+
 <view class="container">
-  <view class="search-wrapper">
-    <view class="search">
+  <view class="search-wrapper" bind:tap="goSearch">
+    <view class="search" hover-class="search-hover">
       <image src="/assets/imgs/ic_search.png"/>
       搜索
     </view>
