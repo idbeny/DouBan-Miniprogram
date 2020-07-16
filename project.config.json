@@ -1,18 +1,19 @@
 {
-	"description": "项目配置文件",
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"packOptions": {
 		"ignore": []
 	},
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -30,14 +31,9 @@
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
-	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
 	"appid": "wxaff2bf0c243d2639",
 	"projectname": "DouBan-Miniprogram",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"libVersion": "2.11.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -54,22 +50,15 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
-					"id": 0,
-					"name": "云开发",
-					"pathName": "pages/clouddev/cloud-dev/cloud-dev",
-					"query": "",
-					"scene": null
+					"id": -1,
+					"name": "db guide",
+					"pathName": "pages/databaseGuide/databaseGuide"
 				}
 			]
 		}
