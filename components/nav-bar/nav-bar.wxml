@@ -4,7 +4,7 @@
   <view class="container">
     <view style="{{ statusBarStyle }}"></view>
     <view class="nav-bar" style="{{ navBarStyle }}">
-      {{ title }}
+      <view class="title">{{ title }}</view>
       <view class="icons">
         <image bind:tap="back" wx:if="{{ back == 'true' }}" class="back" src="{{ navBackSrc }}" />
         <image bind:tap="home" wx:if="{{ home == 'true' }}" class="home" src="{{ navHomeSrc }}" />

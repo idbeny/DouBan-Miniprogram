@@ -1,0 +1,25 @@
+/* pages/clouddev/cloud-database-insert/cloud-database-insert.wxss */
+.toptips {
+  margin-top: 176rpx;
+}
+
+.cover {
+  width: 160rpx;
+  height: 220rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #ccc;
+  background-color: #ccc;
+  margin: 10rpx auto;
+}
+
+.tag {
+  /* height: 60rpx;
+  width: auto; */
+  font-size: 28rpx;
+  display: inline-block;
+  border-radius: 30rpx;
+  border: 2rpx solid rgb(32, 221, 64);
+  padding: 8rpx 20rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}

@@ -8,9 +8,9 @@ Page({
   },
   
   wechatLogin() {
-    wx.navigateTo({
-      url: '/pages/profile/profile',
-    });
+    wx.switchTab({
+      url: '/pages/home/home'
+    })
   },
 
   doubanLogin() {
@@ -21,6 +21,12 @@ Page({
     wx.navigateTo({
       url: '/pages/agreement/agreement',
     });
-      
+  },
+  
+  // 云开发
+  cloudDev() {
+    wx.switchTab({
+      url: '/pages/clouddev/cloud-dev/cloud-dev'
+    })
   }
 })

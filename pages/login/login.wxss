@@ -43,3 +43,9 @@
   color: #42BD55;
   margin-left: 10rpx;
 }
+
+.cloud-dev {
+  margin-top: 60rpx;
+  color: #9c9c9c;
+  border: 2rpx solid #9c9c9c;
+}

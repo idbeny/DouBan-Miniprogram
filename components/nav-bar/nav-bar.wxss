@@ -15,6 +15,14 @@
   font-weight: bold;
 }
 
+.title {
+  text-align: center;
+  width: 320rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .icons {
   position: absolute;
   left: 0;
@@ -25,7 +33,7 @@
   padding: 0 30rpx;
 }
 
-.icons image {
+.icons .back,.home {
   width: 40rpx;
   height: 40rpx;
 }

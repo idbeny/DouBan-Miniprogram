@@ -2,9 +2,7 @@
 <nav-bar title="首页"
         statusBarMode='1'
         color="#42BD55"
-        titleColor="#fff"
-        back="false"
-        home="false">
+        titleColor="#fff">
 </nav-bar>
 
 <view class="container">
@@ -30,6 +28,8 @@
           wx:key="unique"
           class="item" 
           movie= "{{ movie }}"
+          bind:update-movie-status="updateMovieStatus"
+          bind:delete-movie="deleteMovie"
           >
         </movie-item>
       </scroll-view>

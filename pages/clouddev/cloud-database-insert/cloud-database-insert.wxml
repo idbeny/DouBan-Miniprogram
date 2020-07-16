@@ -1,0 +1,44 @@
+<!--pages/clouddev/cloud-database-insert/cloud-database-insert.wxml-->
+<nav-bar title="云数据库-{{ isEdit?'修改':'添加'}}数据"></nav-bar>
+<mp-toptips ext-class="toptips" msg="{{ error }}" type="error" show="{{ error }}"></mp-toptips>
+<view class="container">
+    <view class="page__bd">
+        <mp-cells>
+            <mp-cell ext-class="uploader-cell" title="电影封面">
+                <image mode="aspectFill" slot="footer" bindtap="coverChoose" class="cover" src="{{ fileID }}"></image>
+            </mp-cell>
+            <mp-cell title="电影名称">
+                <input slot="footer" value="{{ title }}" class="weui-input" placeholder="请输入电影名称" data-field="title" bindblur="inputResignActive"/>
+            </mp-cell>
+            <mp-cell title="电影时长">
+                <input slot="footer" type="number" value="{{ duration }}" class="weui-input" placeholder="请输入电影时长" data-field="duration"  bindblur="inputResignActive"/>
+            </mp-cell>
+            <mp-cell title="上映日期">
+                <picker slot="footer" mode="date" value="{{ date }}" bindchange="bindDateChange">
+                    <view class="weui-input">{{ date }}</view>
+                </picker>
+            </mp-cell>
+            <mp-cell title="上映年份" footer="{{ year }}"></mp-cell>
+            <mp-cell title="收藏数">
+                <input slot="footer" type="number" value="{{ favCount }}" class="weui-input" placeholder="请输入收藏数" data-field="favCount" bindblur="inputResignActive"/>
+            </mp-cell>
+            <mp-cell title="类型" footer="{{ type }}"></mp-cell>
+            <mp-cell title="评分">
+                <input slot="footer" type="digit" value="{{ rating }}"class="weui-input" placeholder="请输入评分" data-field="rating" bindblur="inputResignActive"/>
+            </mp-cell>
+            <mp-cell>
+                <block wx:for="{{ tags }}" wx:key="index">
+                    <view class="tag" data-index="{{ index }}" bindtap="tagTapHandle">{{ item }}</view>
+                </block>
+                <input ext-class="taginput" type="text" class="weui-input" value="{{ taginput }}" placeholder="请输入标签名" data-field="tag" bindblur="inputResignActive"/>
+            </mp-cell>
+            <mp-cell title="隐藏电影">
+                <switch slot="footer" checked="{{ status }}" bindchange="switchChange" />
+            </mp-cell>
+        </mp-cells>
+        <view class="weui-btn-area">
+            <mp-loading type="circle" show="{{ showLoading }}"></mp-loading>
+            <button wx:if="{{ !showLoading }}" class="weui-btn" type="primary" bindtap="submitForm">{{ isEdit? '修改' : '添加'}}</button>
+        </view>
+    </view>
+</view>

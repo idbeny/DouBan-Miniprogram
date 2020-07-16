@@ -1,11 +1,17 @@
 // pages/home/home.js
-Page({
+const {db_collection_movie_list} = require("../../cloud/cloud")
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     sections: [
+      {
+        title: '云数据库',
+        url: 'cloud/movie_list',
+        movies: []
+      },
       {
         title: '影院热映',
         url: 'v2/movie/in_theaters',
@@ -74,12 +80,24 @@ Page({
       const section = this.data.sections[i];
       // 优先读取缓存数据（因为是本地数据，速度相对较快，使用同步即可）
       let cachedMovies = wx.getStorageSync(section.url);
-      if (cachedMovies.length != 0) {
+      if (i != 0 && cachedMovies.length != 0) {
         section.movies = cachedMovies;
         // 刷新界面
         this.setData(this.data);
       } else {
-        if (i == 0) { // 本地电影接口特殊处理
+        if (i == 0) { // 云数据库
+          db_collection_movie_list
+          .where({
+            sourceType: 1
+          })
+          .get().then(result => {            
+            this.cached(i, result.data);
+          }).catch(err => {            
+            section.movies = cachedMovies;
+            // 刷新界面
+            this.setData(this.data);
+          })
+        } else if (i == 1) { // 本地城市电影接口特殊处理
           this.getCityData((city) => {
             this.getLatestMovieData(i, {city: city});
           });
@@ -98,23 +116,7 @@ Page({
       header: {'content-type':'json'},
       success: (result) => {        
         const subjects = result.data.subjects;
-        let section = this.data.sections[idx];
-        // 一定要重置，否则会不断累加数据
-        section.movies = [];
-        for (let i = 0; i < subjects.length; i++) {
-          // 本地电影和其他接口数据结构不一样，兼容处理
-          let movie = subjects[i].subject || subjects[i];
-          // 处理星级
-          this.updateMovieStar(movie);
-          section.movies.push(movie);
-          // 刷新界面
-          this.setData(this.data);
-          // 数据缓存本地
-          wx.setStorage({
-            key: section.url,
-            data: section.movies
-          });
-        }
+        this.cached(idx, subjects);
       },
       fail: () => {
         wx.db.toastError(`获取${ this.data.sections[idx].title }失败`)
@@ -122,10 +124,29 @@ Page({
     });
   },
 
+  // 本地缓存
+  cached(sectionIdx, movieList) {
+    let section = this.data.sections[sectionIdx];
+    // 一定要重置，否则会不断累加数据
+    section.movies = [];
+    for (let i = 0; i < movieList.length; i++) {
+      // 本地电影和其他接口数据结构不一样，兼容处理
+      let movie = movieList[i].subject || movieList[i];
+      // 处理星级
+      this.updateMovieStar(movie);
+      section.movies.push(movie);
+      // 刷新界面
+      this.setData(this.data);
+      // 数据缓存本地
+      wx.setStorage({
+        key: section.url,
+        data: section.movies
+      });
+    }
+  },
+
   // 设置电影星级
-  updateMovieStar(movie) {
-    console.log(movie);
-    
+  updateMovieStar(movie) {    
     let stars = parseInt(movie.rating.stars);
     if (stars == 0) return;
     movie.stars = {};
@@ -150,10 +171,31 @@ Page({
     });
   },
 
+  // 监听-删除电影
+  deleteMovie(event) {
+    const movieId = event.detail.movieId;
+    let movies = this.data.sections[0].movies.filter(movie => {
+      return movie._id != movieId;
+    })
+    this.setData(this.data);
+  },
+
+  // 监听-更新电影状态
+  updateMovieStatus(event) {
+    const movieId = event.detail.movieId;
+    const movieStatus = event.detail.status;
+    let findMovie = this.data.sections[0].movies.find(movie => {
+      return movie._id == movieId;
+    });    
+    findMovie.status = movieStatus;
+    this.setData(this.data);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
+    wx.setStorageSync('movieUpdate', 'false') // 防止onShow再次请求
     this.getMovieData();
   },
 
@@ -167,8 +209,18 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (res) {
+    wx.getStorage({
+      key: 'movieUpdate',
+    }).then(res => {
+      if (res.data == 'true') {
+        wx.setStorage({
+          data: 'false',
+          key: 'movieUpdate',
+        })
+        this.getMovieData();
+      }
+    })
   },
 
   /**

@@ -52,14 +52,26 @@ Component({
    */
   methods: {
     back: function() {
-      this.triggerEvent('backTap', { name: 'mj' });
-      wx.navigateBack();
+      this.triggerEvent('backTap', { event: 'back' });
+      let pages = getCurrentPages();
+      if (pages.length > 1) { // 页面栈大于两个才能返回
+        wx.navigateBack();
+      } else {
+        wx.switchTab({
+          url: '/pages/home/home',
+        })
+      }
     },
     home: function() {
-      this.triggerEvent('homeTap', { age: 18 });
-      wx.navigateBack({
-        delta: 999
-      });
+      this.triggerEvent('homeTap', { event: "home" });
+      let pages = getCurrentPages();
+      if (pages.length > 1 && pages.length <= 10) { // 页面栈大于两个才能返回
+        wx.navigateBack();
+      } else {
+        wx.switchTab({
+          url: '/pages/home/home',
+        })
+      }
     }
   },
 
@@ -68,6 +80,19 @@ Component({
    */
   lifetimes: {
     attached() {
+      // 自动显/隐返回和主页按钮
+      let pages = getCurrentPages();    
+      let home = this.data.home;  
+      let back = this.data.back;
+      if (pages.length > 1) {
+        home = "true";
+        back = "true";
+      } else {
+        home = "false";
+        back = "false";
+      }
+      this.setData({home, back});
+      
       const statusBarStyle = `
       height: ${ wx.db.statusBarHeight }px; 
       background-color: ${ this.data.statusBarColor || this.data.color };

@@ -36,6 +36,13 @@ App({
   },
 
   onLaunch: function () {
+    // 初始化云开发
+    wx.cloud.init({
+      traceUser: true
+    });
+
+    
+
     // 豆瓣定制化信息
     wx.db = {};
 

@@ -2,12 +2,14 @@
   "pages": [
     "pages/home/home",
     "pages/profile/profile",
-    "pages/login/login",
     "pages/agreement/agreement",
     "pages/movielist/movielist",
     "pages/moviedetail/moviedetail",
     "pages/rank/rank",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/clouddev/cloud-database-insert/cloud-database-insert",
+    "pages/clouddev/cloud-dev/cloud-dev",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,8 +30,8 @@
         "selectedIconPath": "/assets/imgs/ic_tab_home_active.png"
       },
       {
-        "pagePath": "pages/rank/rank",
-        "text": "榜单",
+        "pagePath": "pages/clouddev/cloud-dev/cloud-dev",
+        "text": "云开发",
         "iconPath": "/assets/imgs/ic_tab_subject_normal.png",
         "selectedIconPath": "/assets/imgs/ic_tab_subject_active.png"
       },

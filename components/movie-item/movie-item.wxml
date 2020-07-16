@@ -1,8 +1,9 @@
 <!--components/movie-item/movie-item.wxml-->
 <view class="item" bind:tap="goDetail" hover-class="hover">
-  <image class="photo" src="{{ movie.images.large }}"></image>
-  <view class="title">{{ movie.title }}</view>
-  <view class="score">
+  <image class="photo" mode="aspectFill" src="{{ movie.images.large }}"></image>
+  <view wx:if="{{ movie.status == 1 }}" class="delete-item">已失效</view>
+  <view class="title {{ movie.status == 1 ? 'delete-opacity' : ''  }}">{{ movie.title }}</view>
+  <view class="score {{ movie.status == 1 ? 'delete-opacity' : ''  }}">
     <block wx:if="{{ movie.stars }}">
       <view class="stars">
         <image wx:for="{{ movie.stars.on }}" wx:key="unique" class="star" src="/assets/imgs/rating_star_small_on.png"/>

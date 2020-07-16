@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     const movieJSON = options.movieJSON;
     // 反序列化
-    const movie = JSON.parse(movieJSON);
+    const movie = JSON.parse(movieJSON);    
     this.setData({
       movie: movie
     });

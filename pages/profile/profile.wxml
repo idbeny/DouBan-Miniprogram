@@ -1,5 +1,5 @@
 <!--pages/profile/profile.wxml-->
-<nav-bar title='书影音档案' back="false" home="false"></nav-bar>
+<nav-bar title='书影音档案'></nav-bar>
 <view class="container">
   <view>
     <view class="login-wrapper">
@@ -15,7 +15,7 @@
         </view>
       </view>
       <view class="items">
-        <view wx:for="{{ items }}" class="item">
+        <view wx:for="{{ items }}" class="item" wx:key="unique">
           <image class="icon" src="/assets/imgs/{{ item.iconName }}"></image>
           <view class="info-wrapper">
             <view class="info">

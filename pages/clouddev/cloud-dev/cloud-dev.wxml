@@ -1,0 +1,11 @@
+<!--pages/clouddev/cloud-dev/cloud-dev.wxml-->
+<nav-bar title='云开发'></nav-bar>
+<view class="container">
+  <view class="section">
+    <view class="title">云数据库</view>
+    <view class="items-wrapper">
+      <view class="item" bind:tap="dbAdd">增加数据</view>
+      <view class="item" bind:tap="dbQuery">查询数据</view>
+    </view>
+  </view>
+</view>

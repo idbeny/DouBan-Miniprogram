@@ -4,6 +4,7 @@
   <image class="logo" src="/assets/imgs/ic_launcher.png"/>
   <view class="wechat btn-login" bind:tap="wechatLogin">{{ wechatLogin }}</view>
   <view class="douban btn-login" bind:tap="doubanLogin">{{ doubanLogin }}</view>
+  <view class="cloud-dev btn-login" bind:tap="cloudDev">云开发</view>
   <view class="agreement">
     {{ agreement }}
     <view class="open" bind:tap="openAgreement">{{ agreementLink }}</view>
