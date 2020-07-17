@@ -131,10 +131,57 @@ Page({
     // });
   },
 
+  // 云函数-订阅消息
+  cloudFuncAddSubscribeMessage() {
+    const subscribeNewMovieTempID = wx.db.subscribeNewMovieTempID;
+    wx.requestSubscribeMessage({
+      tmplIds: [subscribeNewMovieTempID]
+    }).then(res => {
+      const resID = res[subscribeNewMovieTempID];      
+      if (resID == 'accept') { // 允许
+        wx.navigateTo({
+          url: '/pages/clouddev/cloud-subscribe/cloud-subscribe',
+        })
+      } else if (resID == 'ban') { // 封禁
+        wx.db.toastError('小程序被封禁')
+      } else { // 取消
+        this.setData({halfDialogShow: true})
+      }
+    }).catch(err => {
+      this.setData({halfDialogShow: true})
+    })
+  },
+
+  // 获取小程序码
+  cloudFuncGetMPCode() {
+    wx.navigateTo({
+      url: '/pages/clouddev/cloud-minicode/cloud-minicode'
+    })
+  },
+
+  // 半屏组件点击事件
+  halfDialogTapHandle(event) {
+    if (event.detail.item.value == 1) { // 开启
+      wx.openSetting({
+        withSubscriptions: true,
+      })
+      this.setData({halfDialogShow: false})
+    }
+  },
+
   /**
    * 页面的初始数据
    */
   data: {
+    halfDialogShow: false,
+    halfDialogButtons: [
+      {
+        type: 'primary',
+        className: '',
+        text: '立即开启',
+        value: 1
+      }
+    ],
     dbDataString: '',
     page: 0
   },

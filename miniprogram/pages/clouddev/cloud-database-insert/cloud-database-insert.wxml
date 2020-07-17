@@ -37,8 +37,7 @@
             </mp-cell>
         </mp-cells>
         <view class="weui-btn-area">
-            <mp-loading type="circle" show="{{ showLoading }}"></mp-loading>
-            <button wx:if="{{ !showLoading }}" class="weui-btn" type="primary" bindtap="submitForm">{{ isEdit? '修改' : '添加'}}</button>
+            <button class="weui-btn" type="primary" bindtap="submitForm">{{ isEdit? '修改' : '添加'}}</button>
         </view>
     </view>
 </view>

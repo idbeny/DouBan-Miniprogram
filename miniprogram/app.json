@@ -9,8 +9,13 @@
     "pages/search/search",
     "pages/clouddev/cloud-database-insert/cloud-database-insert",
     "pages/clouddev/cloud-dev/cloud-dev",
+    "pages/clouddev/cloud-minicode/cloud-minicode",
+    "pages/clouddev/cloud-subscribe/cloud-subscribe",
     "pages/login/login"
   ],
+  "usingComponents": {
+    "nav-bar": "/components/nav-bar/nav-bar"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

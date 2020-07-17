@@ -14,7 +14,7 @@ App({
       if (type == toastTypeSuccess) {
         options.icon = 'success'
       } else if (type == toastTypeError) {
-        options.icon = '/assets/imgs/upsdk_cancel_normal.png';
+        options.icon = './assets/imgs/upsdk_cancel_normal.png';
       }
       wx.showToast(options);
     };
@@ -54,6 +54,9 @@ App({
 
     // 豆瓣定制化信息
     wx.db = {};
+
+    // 订阅-新电影
+    wx.db.subscribeNewMovieTempID = 'Ar0fVLbQvg7ViA-Jr4bn3OjlNUVHTqD02FhGIvVheQQ';
 
     // Toast必须进行初始化，否则undefined
     this.initDBToast();

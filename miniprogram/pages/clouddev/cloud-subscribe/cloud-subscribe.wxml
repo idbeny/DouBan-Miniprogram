@@ -1,0 +1,27 @@
+<!--pages/clouddev/cloud-subscribe/cloud-subscribe.wxml-->
+<nav-bar title='云函数-订阅消息'></nav-bar>
+<view class="container">
+  <view class="module">
+    <view class="module-title">请选择模块</view>
+    <picker mode="selector" range="{{ pageRange }}" range-key="name" value="{{ index }}" bindchange="bindPickerChange">
+      <view class="picker">{{ pageRange[index].name }}</view>
+    </picker>
+  </view>
+  <mp-cells title="模板信息">
+    <mp-cell title="电影名称">
+        <input slot="footer" value="{{ movie.title }}" class="weui-input" placeholder="请输入电影名称" data-field="title" bindblur="inputResignActive"/>
+    </mp-cell>
+    <mp-cell title="评分">
+        <input slot="footer" type="digit" value="{{ movie.rating }}"class="weui-input" placeholder="请输入评分" data-field="rating" bindblur="inputResignActive"/>
+    </mp-cell>
+    <mp-cell title="上映日期">
+        <picker slot="footer" mode="date" value="{{ movie.date }}" bindchange="bindDateChange">
+            <view class="weui-input">{{ movie.date }}</view>
+        </picker>
+    </mp-cell>
+    <mp-cell>
+      <textarea placeholder="备注" value="{{ movie.mark }}" bindblur="inputResignActive" data-field="mark"></textarea>
+    </mp-cell>
+  </mp-cells>
+  <view class="send" bindtap="send">发送消息</view>
+</view>

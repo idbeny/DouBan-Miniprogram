@@ -80,18 +80,18 @@ Component({
    */
   lifetimes: {
     attached() {
-      // 自动显/隐返回和主页按钮
-      let pages = getCurrentPages();    
-      let home = this.data.home;  
-      let back = this.data.back;
-      if (pages.length > 1) {
-        home = "true";
-        back = "true";
-      } else {
-        home = "false";
-        back = "false";
-      }
-      this.setData({home, back});
+      // // 自动显/隐返回和主页按钮
+      // let pages = getCurrentPages();    
+      // let home = this.data.home;  
+      // let back = this.data.back;
+      // if (pages.length > 1) {
+      //   home = "true";
+      //   back = "true";
+      // } else {
+      //   home = "false";
+      //   back = "false";
+      // }
+      // this.setData({home, back});
       
       const statusBarStyle = `
       height: ${ wx.db.statusBarHeight }px; 

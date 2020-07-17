@@ -1,0 +1,46 @@
+/* pages/clouddev/cloud-minicode/cloud-minicode.wxss */
+.container {
+  padding: 30rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.module {
+  width: 90%;
+  background-color: #f6f6f6;
+  border-radius: 10rpx;
+  padding: 30rpx 30rpx;
+  margin-bottom: 60rpx;
+}
+
+.module-title {
+  text-align: left;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #666666;
+}
+
+.picker {
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #42BD55;
+  font-size: 40rpx;
+}
+
+.reset {
+  position: fixed;
+  bottom: 0;
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  background-color: #42BD55;
+  border: 2rpx solid #42BD55;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 30rpx auto;
+}

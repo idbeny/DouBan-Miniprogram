@@ -2,7 +2,9 @@
 <nav-bar title="首页"
         statusBarMode='1'
         color="#42BD55"
-        titleColor="#fff">
+        titleColor="#fff"
+        back="false" 
+        home="false">
 </nav-bar>
 
 <view class="container">

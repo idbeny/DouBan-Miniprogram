@@ -1,4 +1,3 @@
 <!--pages/agreement/agreement.wxml-->
-<nav-bar title='协议'></nav-bar>
 <web-view src="https://idbeny.gitee.io"></web-view>
   

@@ -1,5 +1,5 @@
 <!--pages/profile/profile.wxml-->
-<nav-bar title='书影音档案'></nav-bar>
+<nav-bar title='书影音档案' back="false" home="false"></nav-bar>
 <view class="container">
   <view>
     <view class="login-wrapper">

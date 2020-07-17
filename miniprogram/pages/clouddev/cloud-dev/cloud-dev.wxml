@@ -1,5 +1,5 @@
 <!--pages/clouddev/cloud-dev/cloud-dev.wxml-->
-<nav-bar title='云开发'></nav-bar>
+<nav-bar title='云开发' back="false" home="false"></nav-bar>
 <view class="container">
   <view class="section">
     <view class="title">云数据库</view>
@@ -12,8 +12,18 @@
   <view class="section">
     <view class="title">云函数</view>
     <view class="items-wrapper">
-      <view class="item" bind:tap="dbAdd">增加数据</view>
-      <view class="item" bind:tap="dbQuery">查询数据</view>
+      <view class="item" bind:tap="cloudFuncAddSubscribeMessage">发送订阅</view>
+      <view class="item" bind:tap="cloudFuncGetMPCode">小程序码</view>
     </view>
   </view>
+
+  <mp-halfScreenDialog 
+    bindbuttontap="halfDialogTapHandle"
+    show="{{halfDialogShow}}"
+    maskClosable="{{false}}" 
+    title="开启订阅消息" 
+    desc="订阅消息状态已被关闭，请手动开启"
+    tips="开启接收消息后才能发送消息给您"
+    buttons="{{halfDialogButtons}}"
+  ></mp-halfScreenDialog>
 </view>

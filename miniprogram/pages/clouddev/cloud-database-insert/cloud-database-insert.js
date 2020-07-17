@@ -9,8 +9,6 @@ Page({
     movieId: '',
     // 是否编辑
     isEdit: false,
-    // 是否展示loading
-    showLoading: false,
     // 错误提示
     error: '',
     // 数据来源（0/null:豆瓣, 1:云数据库, 2:云函数）
@@ -118,8 +116,8 @@ Page({
     if (error) {
       this.setData({error})
     } else {
-      this.setData({
-        showLoading: true
+      wx.showLoading({
+        title: '加载中',
       })
       const genres = this.data.tags;
       let data = {
@@ -151,9 +149,7 @@ Page({
         .doc(this.data.movieId)
         .update({data})
         .then(res => {
-          this.setData({
-            showLoading: false
-          })
+          wx.hideLoading()
           wx.db.toast('修改成功');
           setTimeout((args) => {
             wx.setStorageSync('movieUpdate', 'true');
@@ -168,18 +164,14 @@ Page({
           }, 1000);
         })
         .catch(err => {
-          this.setData({
-            showLoading: false
-          })
+          wx.hideLoading()
           wx.db.toast('修改失败');
         }) 
       } else {
         db_collection_movie_list
         .add({data})
         .then(res => {
-          this.setData({
-            showLoading: false
-          })
+          wx.hideLoading()
           wx.db.toast('添加成功');
           setTimeout((args) => {
             wx.setStorageSync('movieUpdate', 'true');
@@ -189,9 +181,7 @@ Page({
           }, 1000);
         })
         .catch(err => {
-          this.setData({
-            showLoading: false
-          })
+          wx.hideLoading()
           wx.db.toast('添加失败');
         }) 
       }

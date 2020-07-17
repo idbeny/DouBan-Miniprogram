@@ -1,0 +1,13 @@
+<!--pages/clouddev/cloud-minicode/cloud-minicode.wxml-->
+<nav-bar title='云函数-小程序码'></nav-bar>
+<view class="container">
+  <view class="module">
+    <view class="module-title">请选择模块</view>
+    <picker mode="selector" range="{{ pageRange }}" range-key="name" value="{{ index }}" bindchange="bindPickerChange">
+      <view class="picker">{{ pageRange[index].name }}</view>
+    </picker>
+  </view>
+  <image bindlongpress="codeLongpressHandle" mode="aspectFit" src="{{ fileID }}"></image>
+  <view class="reset" bindtap="reset">重新生成</view>
+</view>
+

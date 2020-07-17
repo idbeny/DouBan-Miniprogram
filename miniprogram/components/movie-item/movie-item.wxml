@@ -1,5 +1,5 @@
 <!--components/movie-item/movie-item.wxml-->
-<view class="item" bind:tap="goDetail" hover-class="hover">
+<view class="item" bind:tap="goDetail" bind:longpress="longPressHandle" hover-class="hover">
   <image class="photo" mode="aspectFill" src="{{ movie.images.large }}"></image>
   <view wx:if="{{ movie.status == 1 }}" class="delete-item">已失效</view>
   <view class="title {{ movie.status == 1 ? 'delete-opacity' : ''  }}">{{ movie.title }}</view>

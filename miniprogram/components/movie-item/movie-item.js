@@ -23,6 +23,85 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 长按
+    longPressHandle() {
+      wx.showActionSheet({
+        itemList: ["保存相册", "预览大图"],
+        itemColor: '#000000',        
+      }).then(result => {
+        const index = result.tapIndex;
+        const filePath = this.data.movie.images.large;
+        var that = this;
+        if (index == 0) { // 保存相册
+          wx.getSetting({
+            success(res) {         
+              if (!res.authSetting['scope.writePhotosAlbum']) {
+                wx.authorize({
+                  scope: 'scope.writePhotosAlbum',
+                  success () {      
+                    that.downloadFile(filePath);
+                  },
+                  fail(err) {
+                    wx.openSetting({
+                      withSubscriptions: true,
+                    })
+                  }
+                })
+              } else {
+                that.downloadFile(filePath);
+              }
+            }
+          })
+        } else { // 预览大图
+          wx.previewImage({
+            urls: [filePath],
+            fail(err) {
+              wx.db.toastError('无法预览')
+            } 
+          })
+        }
+      });
+    },
+
+    // 下载图片
+    downloadFile(filePath) {
+      let that = this;
+      if (this.data.movie.sourceType == 1) { // 云数据
+        wx.cloud.downloadFile({
+          fileID: filePath
+        }).then(res => {
+          this.saveToPhotosAlbum(res.tempFilePath);
+        }).catch(err => {
+          wx.db.toastError('下载失败')
+        })
+      } else { // 普通http        
+        wx.downloadFile({
+          url: filePath,
+          success(res) {
+            if (res.statusCode === 200) {
+              that.saveToPhotosAlbum(res.tempFilePath);
+            } else {
+              wx.db.toastError('下载失败')
+            }
+          },
+          fail(err) {
+            wx.db.toastError('下载失败')
+          }
+        });
+      }
+    },
+
+    // 保存相册
+    saveToPhotosAlbum(filePath) {
+      wx.saveImageToPhotosAlbum({
+        filePath
+      }).then(res => {
+        wx.db.toastSuccess('保存成功')
+      }).catch(err => {
+        wx.db.toastError('保存失败')
+      });
+    },
+
     // 详情
     goDetail() {
       // url不能传对象 -> 把对象序列化
