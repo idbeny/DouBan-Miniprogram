@@ -129,6 +129,9 @@ Page({
     let section = this.data.sections[sectionIdx];
     // 一定要重置，否则会不断累加数据
     section.movies = [];
+    if (!movieList) {
+      movieList = [];
+    }
     for (let i = 0; i < movieList.length; i++) {
       // 本地电影和其他接口数据结构不一样，兼容处理
       let movie = movieList[i].subject || movieList[i];

@@ -45,7 +45,7 @@ Page({
       const fileCmpts = filePath.split('.');
       var fileExten = fileCmpts[fileCmpts.length-1];
       const fileName = `${new Date().getTime()}.${fileExten}`;
-      const cloudPath = `images/${fileName}`;
+      const cloudPath = `daben-1gy114rt9c66ed18.6461-daben-1gy114rt9c66ed18-1302465937/images/${fileName}`;
       wx.cloud.uploadFile({
         filePath,
         cloudPath

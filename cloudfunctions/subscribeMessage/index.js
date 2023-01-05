@@ -7,7 +7,7 @@ cloud.init()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try {
-    const result = await cloud.openapi.subscribeMessage.send({
+    const result = await cloud.openapi.templateMessage.send({
       touser: cloud.getWXContext().OPENID, // 通过 getWXContext 获取 OPENID
       page: event.path,
       data: {
